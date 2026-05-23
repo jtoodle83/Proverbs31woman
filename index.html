@@ -1,3 +1,176 @@
-Here is the updated website with the QR code added and clickable to your Stripe payment link:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proverbs 31 Woman Conference</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background:#fbf3f8; color:#241027; line-height:1.6; }
+    .topbar { background:#16031f; color:white; padding:20px; text-align:center; border-bottom:4px solid #d4af37; }
+    .topbar h3 { color:#f6d77b; letter-spacing:4px; font-size:14px; text-transform:uppercase; }
+    .topbar h1 { font-size:34px; margin-top:6px; }
+    .hero { background:linear-gradient(135deg,#2a073d,#4b1266,#16031f); color:white; padding:70px 20px; text-align:center; }
+    .tagline { display:inline-block; border:1px solid #d4af37; color:#f6d77b; padding:10px 18px; border-radius:30px; font-size:13px; letter-spacing:2px; text-transform:uppercase; margin-bottom:25px; background:rgba(255,255,255,.08); }
+    .hero h2 { font-size:58px; line-height:1.05; margin-bottom:18px; }
+    .hero h2 span { color:#f6d77b; font-style:italic; display:block; }
+    .hero h4 { font-size:38px; text-transform:uppercase; margin:25px auto; max-width:900px; }
+    .hero h4 span { color:#f6d77b; }
+    .hero p { max-width:840px; margin:0 auto 30px; font-size:19px; color:rgba(255,255,255,.86); }
+    .button-row { display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-top:30px; }
+    .button { display:inline-block; padding:16px 28px; border-radius:14px; font-weight:bold; text-decoration:none; font-size:18px; }
+    .gold-button { background:#d4af37; color:#241027; }
+    .outline-button { border:1px solid #d4af37; color:white; }
+    .section { padding:65px 20px; max-width:1180px; margin:auto; }
+    .details { margin-top:-35px; position:relative; z-index:2; }
+    .details-grid,.speaker-grid,.pillar-grid { display:grid; gap:22px; }
+    .details-grid { grid-template-columns:repeat(3,1fr); }
+    .card { background:white; border-radius:25px; padding:28px; box-shadow:0 12px 35px rgba(36,16,39,.12); border:1px solid #ead7ef; }
+    .details-card { text-align:center; }
+    .details-card h3,.eyebrow { color:#b78a21; font-weight:bold; text-transform:uppercase; letter-spacing:3px; font-size:14px; margin-bottom:12px; }
+    .details-card p { font-size:27px; font-weight:900; color:#341047; }
+    .details-card small { display:block; color:#666; margin-top:6px; }
+    .section-title { font-size:44px; line-height:1.1; color:#341047; margin-bottom:22px; font-weight:900; }
+    .about-layout,.founder-layout,.register-layout { display:grid; grid-template-columns:1fr 1fr; gap:35px; align-items:center; }
+    .scripture-card,.registration { background:linear-gradient(135deg,#2a073d,#4b1266); color:white; border-radius:30px; padding:40px; box-shadow:0 18px 45px rgba(36,16,39,.22); }
+    .scripture-card .quote { font-size:28px; font-style:italic; margin:22px 0; }
+    .scripture-card strong { color:#f6d77b; letter-spacing:2px; }
+    .pillar-grid { grid-template-columns:repeat(2,1fr); margin-top:24px; }
+    .pillar h3,.speaker h3 { color:#341047; font-size:23px; margin-bottom:8px; }
+    .speaker-grid { grid-template-columns:repeat(3,1fr); margin-top:38px; }
+    .speaker { position:relative; overflow:hidden; text-align:center; }
+    .speaker:before { content:""; display:block; height:7px; background:linear-gradient(90deg,#4b1266,#d4af37,#4b1266); margin:-28px -28px 24px; }
+    .speaker img { width:170px; height:170px; object-fit:cover; border-radius:50%; border:5px solid #d4af37; margin:5px auto 18px; display:block; box-shadow:0 10px 25px rgba(36,16,39,.18); }
+    .topic { color:#b78a21; text-transform:uppercase; font-weight:900; letter-spacing:1px; margin-bottom:14px; font-size:14px; }
+    .center { text-align:center; }
+    .list-item { display:flex; gap:12px; margin-bottom:14px; font-size:18px; }
+    .check { color:#b78a21; font-weight:bold; }
+    .registration h2 { color:#f6d77b; font-size:60px; margin:10px 0; }
+    .qr-image { width:220px; height:220px; object-fit:contain; display:block; margin:25px auto 15px; border-radius:20px; border:5px solid #d4af37; background:white; }
+    .founder { background:#14031d; color:white; padding:70px 20px; }
+    .founder-inner { max-width:1180px; margin:auto; }
+    .founder h2 { font-size:48px; margin:10px 0; }
+    .founder h3 { color:#f6d77b; font-size:25px; margin-bottom:20px; }
+    .founder-photo { width:100%; max-width:360px; height:460px; object-fit:cover; border-radius:30px; border:5px solid #d4af37; box-shadow:0 18px 45px rgba(0,0,0,.28); margin:0 auto 25px; display:block; }
+    .badges { display:flex; flex-wrap:wrap; gap:10px; margin-top:25px; }
+    .badge { border:1px solid #d4af37; color:#f6d77b; padding:10px 16px; border-radius:30px; font-size:13px; font-weight:bold; text-transform:uppercase; }
+    .contact-card { background:rgba(255,255,255,.09); border:1px solid rgba(212,175,55,.35); border-radius:28px; padding:30px; }
+    .contact-card p { margin-bottom:14px; }
+    .footer-line { text-align:center; color:#f6d77b; letter-spacing:4px; text-transform:uppercase; border-top:1px solid rgba(255,255,255,.15); margin-top:40px; padding-top:25px; font-size:13px; }
+    @media(max-width:900px) {
+      .details-grid,.speaker-grid,.pillar-grid,.about-layout,.founder-layout,.register-layout { grid-template-columns:1fr; }
+      .hero h2 { font-size:42px; }
+      .hero h4,.section-title { font-size:34px; }
+    }
+  </style>
+</head>
+<body>
+<header class="topbar"><h3>Proverbs 31</h3><h1>Woman Conference</h1></header>
 
-[Download the final website ZIP](sandbox:/mnt/data/proverbs31_website_FINAL_with_QR.zip)
+<section class="hero">
+  <div class="tagline">You Were Made to Build, Manage & Thrive</div>
+  <h2>Proverbs 31 <span>Woman</span> Conference</h2>
+  <h4>Get Your <span>House</span> in Order</h4>
+  <p>A powerful faith-and-purpose conference created to help women gain wisdom, strategy, and practical tools to build stronger homes, stronger finances, and purpose-driven lives.</p>
+  <div class="button-row">
+    <a href="https://buy.stripe.com/7sY7sN0vb2Ym1xAbD8cs800" class="button gold-button">Reserve Your Seat</a>
+    <a href="https://buy.stripe.com/7sY7sN0vb2Ym1xAbD8cs800" class="button outline-button">$147 Registration</a>
+  </div>
+</section>
+
+<section class="section details">
+  <div class="details-grid">
+    <div class="card details-card"><h3>Date</h3><p>July 11, 2026</p></div>
+    <div class="card details-card"><h3>Time</h3><p>10AM – 2PM</p><small>Q&A buffer included</small></div>
+    <div class="card details-card"><h3>Location</h3><p>128 Encerti Ave</p><small>Vallejo, CA 94590</small></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="about-layout">
+    <div class="scripture-card">
+      <div class="eyebrow">Conference Scripture</div>
+      <p class="quote">“She considereth a field, and buyeth it: with the fruit of her hands she planteth a vineyard.”</p>
+      <strong>PROVERBS 31:16 KJV</strong>
+    </div>
+    <div>
+      <div class="eyebrow">About the Experience</div>
+      <h2 class="section-title">A powerful room for women ready to build with wisdom.</h2>
+      <p>The Proverbs 31 Woman Conference: Get Your House in Order is designed for women who are ready to align their faith, finances, home, credit, real estate goals, investments, protection, wealth, and legacy with practical action and kingdom purpose. This year’s experience will also include brunch and giveaways as we create a room filled with wisdom, sisterhood, strategy, and impact.</p>
+      <div class="pillar-grid">
+        <div class="card pillar"><h3>Biblical Wisdom</h3><p>Faith-filled teaching that helps women build from a place of truth, purpose, and obedience.</p></div>
+        <div class="card pillar"><h3>Empowerment</h3><p>A room created for women to be refreshed, strengthened, equipped, and reminded of who they are.</p></div>
+        <div class="card pillar"><h3>Brunch & Sisterhood</h3><p>Come connect, fellowship, and be poured into while enjoying brunch with purpose-driven women.</p></div>
+        <div class="card pillar"><h3>Giveaways & Impact</h3><p>We will celebrate, pour into, and bless women in the room through encouragement, tools, and giveaways.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section center">
+  <div class="eyebrow">Powerful Speakers • Conference Partners • Purposed Impact</div>
+  <h2 class="section-title">Featured Women & Conference Partners</h2>
+  <p>A dynamic lineup bringing faith, finance, credit, mortgage, real estate, property management, protection, wealth, and investment wisdom into one powerful room.</p>
+  <div class="speaker-grid">
+    <div class="card speaker"><img src="images/jessica-toodle.jpg" alt="Jessica Toodle"><h3>Jessica Toodle</h3><div class="topic">Founder • Different Avenues of Real Estate</div><p>Founder of the Proverbs 31 Woman Conference, Luxury Realtor®, and kingdom builder helping women understand real estate pathways, ownership, legacy, and what it means to possess the land with purpose.</p></div>
+    <div class="card speaker"><img src="images/lady-kiara-manuel.jpg" alt="Lady Kiara Manuel"><h3>Lady Kiara Manuel</h3><div class="topic">Proverbs 31 Woman</div><p>A powerful voice of faith and wisdom, helping women embrace identity, strength, godly order, and the beauty of walking boldly in purpose.</p></div>
+    <div class="card speaker"><img src="images/lashonta-knight.jpg" alt="LaShonta Knight"><h3>LaShonta Knight</h3><div class="topic">All Finances</div><p>Practical and empowering financial wisdom to help women manage money, steward resources, break cycles, and build with confidence.</p></div>
+    <div class="card speaker"><img src="images/evelyn-curry.png" alt="Evelyn Curry"><h3>Evelyn Curry</h3><div class="topic">Credit Specialist</div><p>Credit strategy and financial education that helps women repair, rebuild, and position themselves for greater opportunities and ownership.</p></div>
+    <div class="card speaker"><img src="images/ebony-an-smith.jpg" alt="Ebony AN Smith"><h3>Ebony AN Smith</h3><div class="topic">Wealth and Legacy</div><p>Powerful insight on protection, preparation, wealth-building, and legacy so women can make wise decisions for their families and future.</p></div>
+    <div class="card speaker"><img src="images/jaime-powell.png" alt="Jaime Powell"><h3>Jaime Powell</h3><div class="topic">Property Management for Renters</div><p>Clear guidance for renters on stability, responsibility, housing readiness, and how to prepare for the next level in their housing journey.</p></div>
+    <div class="card speaker"><img src="images/princess-mitchell.png" alt="Princess Mitchell"><h3>Princess Mitchell</h3><div class="topic">Investments</div><p>Strategic wisdom on investing, building generational wealth, and making bold financial decisions that support long-term legacy.</p></div>
+    <div class="card speaker"><img src="images/tanisha-broadway.png" alt="Tanisha Broadway"><h3>Tanisha Broadway</h3><div class="topic">Conference Partner • Loan Diva Sr. Mortgage Advisor</div><p>A trusted mortgage professional and conference partner helping women understand financing, readiness, and the power of preparing for homeownership.</p></div>
+    <div class="card speaker"><img src="images/sumer-lopes.png" alt="Sumer Lopes"><h3>Sumer Lopes</h3><div class="topic">Conference Partner • Sr. Mortgage Advisor</div><p>A trusted mortgage advisor and conference partner bringing clarity, lending insight, and home financing support for women preparing for their future.</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="register-layout">
+    <div class="card">
+      <div class="eyebrow">Who Should Attend?</div>
+      <h2 class="section-title">This room is for you.</h2>
+      <div class="list-item"><span class="check">✓</span><span>Women ready to get their house in order</span></div>
+      <div class="list-item"><span class="check">✓</span><span>Women preparing for homeownership</span></div>
+      <div class="list-item"><span class="check">✓</span><span>Renters ready to understand their next steps</span></div>
+      <div class="list-item"><span class="check">✓</span><span>Women building financial confidence</span></div>
+      <div class="list-item"><span class="check">✓</span><span>Entrepreneurs and purpose-driven leaders</span></div>
+      <div class="list-item"><span class="check">✓</span><span>Women desiring legacy, wisdom, and strategy</span></div>
+      <div class="list-item"><span class="check">✓</span><span>Women ready for brunch, connection, giveaways, and a powerful room of impact</span></div>
+    </div>
+    <div id="register" class="registration">
+      <div class="eyebrow">Registration</div>
+      <h2>$147</h2>
+      <p>Invest in you. Your home. Your future. Your legacy.</p>
+      <a href="https://buy.stripe.com/7sY7sN0vb2Ym1xAbD8cs800"><img class="qr-image" src="images/payment-qr.png" alt="Scan to pay QR code"></a>
+      <h3 style="text-align:center;color:#f6d77b;font-size:28px;margin-top:15px;">Click to Register & Pay</h3>
+      <p style="text-align:center;color:rgba(255,255,255,.8);">Click the QR image or button below to reserve your seat through the secure Stripe payment link.</p>
+      <a href="https://buy.stripe.com/7sY7sN0vb2Ym1xAbD8cs800" class="button gold-button" style="margin-top:20px;display:block;text-align:center;">Pay Registration Fee</a>
+    </div>
+  </div>
+</section>
+
+<footer class="founder">
+  <div class="founder-inner">
+    <div class="founder-layout">
+      <div>
+        <div class="eyebrow">Founder</div>
+        <h2>Jessica Toodle</h2>
+        <h3>Founder of the Proverbs 31 Woman Conference</h3>
+        <p>Jessica Toodle is a faith-driven leader, Luxury Realtor®, visionary, and community builder passionate about helping women walk in purpose, ownership, wisdom, and legacy. She created the Proverbs 31 Woman Conference as a space for women to be empowered spiritually, financially, mentally, and practically.</p>
+        <p style="margin-top:18px;">As the conference enters its 7th year, Jessica continues to gather women for real conversations, practical education, and kingdom-centered impact through homeownership, financial literacy, real estate, credit, investments, protection, and legacy building.</p>
+        <div class="badges"><span class="badge">Luxury Realtor®</span><span class="badge">#PossessTheLand</span><span class="badge">Kingdom Builder</span><span class="badge">Women. Real Purpose. Real Impact.</span></div>
+      </div>
+      <div class="contact-card">
+        <img class="founder-photo" src="images/jessica-toodle.jpg" alt="Jessica Toodle Founder">
+        <h3>Connect With Jessica</h3>
+        <p><strong>Email:</strong> jesstoodle@gmail.com</p>
+        <p><strong>Phone:</strong> 707.400.7892</p>
+        <p><strong>Instagram:</strong> @JessToodleRealtor</p>
+        <a href="https://buy.stripe.com/7sY7sN0vb2Ym1xAbD8cs800" class="button gold-button" style="margin-top:20px;display:block;text-align:center;">Register for the Conference</a>
+      </div>
+    </div>
+    <div class="footer-line">Faith • Purpose • Wisdom • Legacy</div>
+  </div>
+</footer>
+</body>
+</html>
